@@ -1,3 +1,31 @@
+server:
+  port: 8080
+
 spring:
   application:
-    name: Auth Service
+    name: auth-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/authdb
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+logging:
+  level:
+    root: INFO
+    com.raisehigh.saas.auth: DEBUG
+
+app:
+  jwt:
+    secret: "9f4e8a9cce0949f2bb8d0e86a743f7b109f4e8a9cce0949f2bb8d0e86a743f7b"  # 64 bytes (HS256 safe)
+    expiration-ms: 3600000          # 1 hour
+    refresh-expiration-ms: 604800000 # 7 days
